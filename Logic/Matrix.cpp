@@ -377,8 +377,20 @@ int Matrix::getHCost(Cell *askingC,Cell* destiny)
 }
 int Matrix::getGCost(Cell *askingC, List<Cell *> *closed,Cell* begining)
 {
-    Cell* cNeigh= lowestF(closed)->getValue();
-    if(closed->getLength()>0)
+    Cell* cNeigh= nullptr;
+    Node<Cell*>* temp=askingC->getNeighbours()->getHead();
+    while(temp!= nullptr)
+    {
+        if(in(closed,temp->getValue()))
+        {
+            if(cNeigh== nullptr||cNeigh->getG()>temp->getValue()->getG())
+            {
+                cNeigh=temp->getValue();
+            }
+        }
+        temp=temp->getNext();
+    }
+    if(cNeigh!= nullptr)
     {
         if (cNeigh->getLine() > askingC->getLine()||cNeigh->getLine() < askingC->getLine()) {
             if (cNeigh->getColumn() > askingC->getColumn()||cNeigh->getColumn() < askingC->getColumn())
