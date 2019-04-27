@@ -23,7 +23,7 @@ class List
         }
         void add(T v)
         {
-            Node<T>* n= new Node<T>(v);
+            Node<T>* n= new Node<T>(v,++length);
             if(this->head== nullptr)
             {
                 this->head=n;
@@ -35,9 +35,46 @@ class List
                 {
                     temp=temp->getNext();
                 }
-                temp->setNext(v);
+                temp->setNext(n);
             }
-            length++;
+
+        }
+        void del(int o)
+        {
+            Node<T>* temp=this->head;
+            if(temp->getOrder()==o)
+            {
+                this->head=temp->getNext();
+                temp->purge();
+                delete(temp);
+                Node<T>* temp2= this->head;
+                while(temp2!= nullptr)
+                {
+                    temp2->setOrder(temp2->getOrder()-1);
+                    temp2=temp2->getNext();
+                }
+                temp2= nullptr;
+                delete(temp2);
+            }
+            else
+            {
+                while(temp->getNext()->getOrder()!=o)
+                {
+                    temp=temp->getNext();
+                }
+                Node<T>* temp2=temp->getNext();
+                temp->setNext(temp2->getNext());
+                temp2->purge();
+                temp= temp->getNext();
+                while(temp!= nullptr)
+                {
+                    temp->setOrder(temp->getOrder()-1);
+                    temp=temp->getNext();
+                }
+                delete(temp);
+                delete(temp2);
+            }
+            length--;
         }
         List<T>* getNext()
         {

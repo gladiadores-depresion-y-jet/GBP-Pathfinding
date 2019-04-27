@@ -143,9 +143,8 @@ Cell *Matrix::get(int f, int c)
     return temp2->getValue();
 }
 
-void Matrix::setNeighbours(int l,int c)
+void Matrix::setNeighbours(Cell* cell)
 {
-    Cell* cell= get(l,c);
     if (cell->getLine() == 0)
     {
         if (cell->getColumn() == 0) {
@@ -253,4 +252,194 @@ void Matrix::setAsObstacle(int l,int c)
     Cell* cell=get(l,c);
     cell->setAsObstacle();
 
+}
+
+void Matrix::AstarFindPath(int lstart, int cstart, int lfinish, int cfinish)
+{
+    Cell* start=get(lstart,cstart);
+    Cell* finish= get(lfinish,cfinish);
+    List<Cell*>* open= new List<Cell*>;
+    List<Cell*>* closed= new List<Cell*>;
+
+    open->add(start);
+
+    while(true)
+    {
+        Node<Cell*>* temp= open->getHead();
+        while(temp!= nullptr)
+        {
+            temp->getValue()->setG(getGCost(temp->getValue(),closed,start));
+            temp->getValue()->setH(getHCost(temp->getValue(),finish));
+            temp=temp->getNext();
+        }
+        Node<Cell*>* currentNode= lowestF(open);
+        Cell* current=currentNode->getValue();
+
+        closed->add(currentNode->getValue());
+        open->del(currentNode->getOrder());
+
+        if(current->getLine()==finish->getLine()&&current->getColumn()==finish->getColumn())
+        {
+            break;
+        }
+        setNeighbours(current);
+        List<Cell*>* currentN=current->getNeighbours();
+        temp=currentN->getHead();
+        while(temp!= nullptr)
+        {
+            if(temp->getValue()->isObstacle()||in(closed,temp->getValue()))
+            {
+                temp=temp->getNext();
+            }
+            else
+            {
+
+            }
+        }
+
+
+
+    }
+}
+
+int Matrix::getHCost(Cell *askingC,Cell* destiny)
+{
+    if(askingC->getLine()==destiny->getLine()&&askingC->getColumn()==destiny->getColumn())
+    {
+        return 0;
+    }
+    else
+    {
+        int cost=0;
+        int line=askingC->getLine();
+        int column=askingC->getColumn();
+        while(true)
+        {
+            if(line==destiny->getLine()&&column==destiny->getColumn())
+            {
+                return cost;
+            }
+            else if(destiny->getLine()>line)
+            {
+                if(destiny->getColumn()>column)
+                {
+                    cost+=14;
+                    line+=1;
+                    column+=1;
+                }
+                else if(destiny->getColumn()<column)
+                {
+                    cost+=14;
+                    line+=1;
+                    column-=1;
+                }
+                else
+                {
+                    cost+=10;
+                    line+=1;
+                }
+            }
+            else if(destiny->getLine()<line)
+            {
+                if(destiny->getColumn()>column)
+                {
+                    cost+=14;
+                    line-=1;
+                    column+=1;
+                }
+                else if(destiny->getColumn()<column)
+                {
+                    cost+=14;
+                    line-=1;
+                    column-=1;
+                }
+                else
+                {
+                    cost+=10;
+                    line-=1;
+                }
+            }
+            else
+            {
+                if(destiny->getColumn()>column)
+                {
+                    cost+=10;
+                    column+=1;
+                }
+                else if(destiny->getColumn()<column)
+                {
+                    cost+=10;
+                    column-=1;
+                }
+            }
+        }
+    }
+}
+int Matrix::getGCost(Cell *askingC, List<Cell *> *closed,Cell* begining)
+{
+    Cell* cNeigh= lowestF(closed)->getValue();
+    if(closed->getLength()>0)
+    {
+        if (cNeigh->getLine() > askingC->getLine()||cNeigh->getLine() < askingC->getLine()) {
+            if (cNeigh->getColumn() > askingC->getColumn()||cNeigh->getColumn() < askingC->getColumn())
+            {
+                return (14 + cNeigh->getG());
+            }
+            else
+            {
+                return (10 + cNeigh->getG());
+            }
+        }
+        else
+        {
+            return (14 + cNeigh->getG());
+        }
+
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+
+Node<Cell*>*Matrix::lowestF(List<Cell *> *list)
+{
+    Node<Cell*>* temp=list->getHead();
+    Node<Cell*>* c= temp;
+    while(temp!= nullptr)
+    {
+        if(temp->getValue()->getF()<c->getValue()->getF())
+        {
+            c=temp;
+        }
+        else if(temp->getValue()->getF()==c->getValue()->getF())
+        {
+            if(temp->getValue()->getH()<c->getValue()->getH())
+            {
+                c=temp;
+            }
+        }
+        temp=temp->getNext();
+    }
+    return c;
+}
+
+bool Matrix::in(List<Cell *> *list, Cell *cell)
+{
+    Node<Cell*>*temp=list->getHead();
+    while(temp!= nullptr)
+    {
+        if(temp->getValue()->getLine()==cell->getLine()&&temp->getValue()->getColumn()==cell->getColumn())
+        {
+            return true;
+        }
+        temp=temp->getNext();
+    }
+    return false;
+}
+
+bool Matrix::isShorter(Cell *testCell, Cell *newParentCell)
+{
+    int gCost=0;
 }

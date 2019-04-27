@@ -10,15 +10,17 @@ class Node
 {
     private:
         T value;
+        int order;
         Node* next;
     public:
         Node()
         {
             this->next= nullptr;
         }
-        Node(T v)
+        Node(T v,int o)
         {
             this->value=v;
+            this->order=o;
             this->next= nullptr;
         }
         T getValue()
@@ -29,11 +31,29 @@ class Node
         {
             return next;
         }
-        void setNext(T v)
+        void setNext(T v,int o)
         {
-            Node<T>* n= new Node(v);
+            Node<T>* n= new Node(v,o);
             this->next=n;
 
+        }
+        void setNext(Node<T>* node)
+        {
+            this->next=node;
+        }
+        int getOrder()
+        {
+            return this->order;
+        }
+        void purge()
+        {
+            this->order=0;
+            this->value= nullptr;
+            this->next= nullptr;
+        }
+        void setOrder(int o)
+        {
+            this->order=o;
         }
 };
 

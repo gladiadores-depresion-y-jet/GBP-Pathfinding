@@ -7,11 +7,12 @@
 Cell::Cell()
 {
     this->obstacle=false;
+    this->path=false;
     this->column=0;
     this->line=0;
-    this->F=0;
     this->G=0;
     this->H=0;
+    this->neighbours=new List<Cell*>;
 }
 
 Cell::Cell(int l, int c)
@@ -19,9 +20,9 @@ Cell::Cell(int l, int c)
     this->obstacle=false;
     this->column=c;
     this->line=l;
-    this->F=0;
     this->G=0;
     this->H=0;
+    this->neighbours=new List<Cell*>;
 }
 
 int Cell::getColumn()
@@ -36,7 +37,7 @@ int Cell::getLine()
 
 int Cell::getF()
 {
-    return this->F;
+    return (this->G+this->H);
 }
 
 int Cell::getH()
@@ -53,12 +54,6 @@ void Cell::setColumn(int c)
 {
     this->column=c;
 }
-
-void Cell::setF()
-{
-    this->F=this->G+this->H;
-}
-
 void Cell::setG(int g)
 {
     this->G=g;
@@ -71,7 +66,7 @@ void Cell::setH(int h)
 
 void Cell::addNeighbour(Cell *n)
 {
-    this->neighbours.push_back(n);
+    this->neighbours->add(n);
 }
 
 void Cell::setAsObstacle()
@@ -90,8 +85,25 @@ int Cell::getG() {
 
 void Cell::markNeighbours()
 {
-    for(int i=0;i<neighbours.size();i++)
+    Node<Cell*>* temp=neighbours->getHead();
+    while(temp!= nullptr)
     {
-        neighbours[i]->setG(-1);
+        temp->getValue()->setG(-1);
+        temp=temp->getNext();
     }
+}
+
+bool Cell::isPath()
+{
+        return path;
+}
+
+void Cell::setAsPath()
+{
+    this->path=true;
+}
+
+List<Cell *> *Cell::getNeighbours()
+{
+    return this->neighbours;
 }

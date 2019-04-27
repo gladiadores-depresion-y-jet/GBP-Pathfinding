@@ -19,9 +19,15 @@ class Matrix
         void fill10();
         void print();
         Cell* get(int f,int c);
-        void setNeighbours(int l,int c);
+        void setNeighbours(Cell* cell);
         Cell* getNeighbour(Cell* c,string position);
         void setAsObstacle(int l,int c);
+        int getHCost(Cell* askingC,Cell* end);
+        int getGCost(Cell* askingC,List<Cell*>* closed,Cell* begining);
+        void AstarFindPath(int lstart,int cstart,int lfinish,int cfinish);
+        Node<Cell*>* lowestF(List<Cell*>* list);
+        bool in(List<Cell*>* list,Cell* cell);
+        bool isShorter(Cell* testCell,Cell* newParentCell);
 };
 
 
