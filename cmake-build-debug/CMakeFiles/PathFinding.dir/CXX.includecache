@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/dcamachog1501/Desktop/PathFinding/Logic/Cell.cpp
+Cell.h
+/home/dcamachog1501/Desktop/PathFinding/Logic/Cell.h
+
+/home/dcamachog1501/Desktop/PathFinding/Logic/Cell.h
+vector
+-
+
+/home/dcamachog1501/Desktop/PathFinding/Logic/Matrix.cpp
+string
+-
+iostream
+-
+Matrix.h
+/home/dcamachog1501/Desktop/PathFinding/Logic/Matrix.h
+
+/home/dcamachog1501/Desktop/PathFinding/Logic/Matrix.h
+Cell.h
+/home/dcamachog1501/Desktop/PathFinding/Logic/Cell.h
+../Structures/List.h
+/home/dcamachog1501/Desktop/PathFinding/Structures/List.h
+
+/home/dcamachog1501/Desktop/PathFinding/Main/main.cpp
+iostream
+-
+../Logic/Matrix.h
+/home/dcamachog1501/Desktop/PathFinding/Logic/Matrix.h
+
+/home/dcamachog1501/Desktop/PathFinding/Structures/List.h
+Node.h
+/home/dcamachog1501/Desktop/PathFinding/Structures/Node.h
+
+/home/dcamachog1501/Desktop/PathFinding/Structures/Node.h
+
