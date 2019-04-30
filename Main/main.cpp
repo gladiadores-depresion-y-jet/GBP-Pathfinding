@@ -32,7 +32,6 @@ int main()
    m->setAsObstacle(2,6);
     m->setAsObstacle(2,7);
     m->setAsObstacle(2,8);
-   m->setAsObstacle(3,6);
 
    m->AstarFindPath(4,3,0,7);
 
