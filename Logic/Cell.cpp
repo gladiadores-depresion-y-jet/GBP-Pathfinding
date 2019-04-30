@@ -12,6 +12,7 @@ Cell::Cell()
     this->line=0;
     this->G=0;
     this->H=0;
+    this->parent= nullptr;
     this->neighbours=new List<Cell*>;
 }
 
@@ -22,6 +23,7 @@ Cell::Cell(int l, int c)
     this->line=l;
     this->G=0;
     this->H=0;
+    this->parent= nullptr;
     this->neighbours=new List<Cell*>;
 }
 
@@ -106,4 +108,12 @@ void Cell::setAsPath()
 List<Cell *> *Cell::getNeighbours()
 {
     return this->neighbours;
+}
+Cell* Cell::getParent()
+{
+    return this->parent;
+}
+void Cell::setParent(Cell* c)
+{
+    this->parent=c;
 }

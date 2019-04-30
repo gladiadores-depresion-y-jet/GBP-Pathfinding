@@ -9,11 +9,11 @@ int main()
    cout<<"|******|"<<endl;
    cout<<"|******|"<<endl;
    cout<<"|  60  |"<<endl;
-   cout<<"|______|"<<endl;
+   cout<<"|______|"<<endl;*/
 
    Matrix* m= new Matrix();
    m->fill10();
-   for(int i=0;i<10;i++)
+   /*for(int i=0;i<10;i++)
    {
      m->setAsObstacle(i,i);
    }
@@ -22,24 +22,20 @@ int main()
    {
         m->setAsObstacle(l,i);
         l--;
-   }
-   m->setAsObstacle(4,0);
-   Cell* cell=m->get(1,2);
-   Cell* start=m->get(6,7);
-   int g=m->getCost(cell,start);
-   cout<<"Costo de G: "<<to_string(g)<<endl;
-   m->setNeighbours(cell);
-   cell->markNeighbours();
+   }*/
+   m->setAsObstacle(2,0);
+   m->setAsObstacle(2,1);
+   m->setAsObstacle(2,2);
+   m->setAsObstacle(2,3);
+   m->setAsObstacle(2,4);
+   m->setAsObstacle(2,5);
+   m->setAsObstacle(2,6);
+    m->setAsObstacle(2,7);
+    m->setAsObstacle(2,8);
+   m->setAsObstacle(3,6);
+
+   m->AstarFindPath(4,3,0,7);
+
    m->print();
-*/
-   List<Cell*>* l= new List<Cell*>;
-   for(int i=0;i<10;i++)
-   {
-       Cell* c= new Cell;
-       l->add(c);
-   }
-   l->del(8);
-   l->del(1);
-   l->del(5);
     return 0;
 }

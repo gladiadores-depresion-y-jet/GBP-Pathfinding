@@ -28,6 +28,7 @@ class Matrix
         Node<Cell*>* lowestF(List<Cell*>* list);
         bool in(List<Cell*>* list,Cell* cell);
         bool isShorter(Cell* testCell,Cell* newParentCell);
+        int movementCost(Cell* begining,Cell* end);
 };
 
 

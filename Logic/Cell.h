@@ -18,6 +18,7 @@ class Cell
         int H;
         bool obstacle;
         bool path;
+        Cell* parent;
         List<Cell*>* neighbours;
     public:
         Cell();
@@ -29,7 +30,6 @@ class Cell
         int getG();
         void setLine(int l);
         void setColumn(int c);
-        void setF();
         void setG(int g);
         void setH(int h);
         void addNeighbour(Cell* n);
@@ -39,7 +39,8 @@ class Cell
         void setAsPath();
         void markNeighbours();
         List<Cell*>* getNeighbours();
-
+        Cell *getParent();
+        void setParent(Cell *c);
 };
 
 

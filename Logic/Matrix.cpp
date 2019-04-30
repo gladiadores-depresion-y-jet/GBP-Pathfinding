@@ -61,7 +61,7 @@ void Matrix::print()
             }
             else
             {
-                two+=to_string(temp2->getValue()->getG())+"   "+to_string(temp2->getValue()->getH())+" |";
+                two+="      |";//to_string(temp2->getValue()->getG())+"   "+to_string(temp2->getValue()->getH())+" |";
             }
             temp2=temp2->getNext();
         }
@@ -87,9 +87,16 @@ void Matrix::print()
             {
                 four+="******|";
             }
+            else if(temp2->getValue()->isPath())
+            {
+                four+="   X  |";
+            }
             else
             {
-                four+="   "+to_string(temp2->getValue()->getF())+"  |";
+                if(temp2->getValue()->getF()>0)
+                four+="  "+to_string(temp2->getValue()->getF())+"  |";
+                else
+                    four+="      |";
             }
             temp2=temp2->getNext();
         }
@@ -274,8 +281,7 @@ void Matrix::AstarFindPath(int lstart, int cstart, int lfinish, int cfinish)
         }
         Node<Cell*>* currentNode= lowestF(open);
         Cell* current=currentNode->getValue();
-
-        closed->add(currentNode->getValue());
+        closed->add(current);
         open->del(currentNode->getOrder());
 
         if(current->getLine()==finish->getLine()&&current->getColumn()==finish->getColumn())
@@ -283,22 +289,28 @@ void Matrix::AstarFindPath(int lstart, int cstart, int lfinish, int cfinish)
             break;
         }
         setNeighbours(current);
-        List<Cell*>* currentN=current->getNeighbours();
-        temp=currentN->getHead();
+        temp=current->getNeighbours()->getHead();
         while(temp!= nullptr)
         {
-            if(temp->getValue()->isObstacle()||in(closed,temp->getValue()))
+            if(!(temp->getValue()->isObstacle()||in(closed,temp->getValue()))&&(isShorter(temp->getValue(),current)||!in(open,temp->getValue())))
             {
-                temp=temp->getNext();
+                setNeighbours(temp->getValue());
+                temp->getValue()->setG(getGCost(temp->getValue(),closed,start));
+                temp->getValue()->setH(getHCost(temp->getValue(),finish));
+                temp->getValue()->setParent(current);
+                if(!in(open,temp->getValue()))
+                {
+                    open->add(temp->getValue());
+                }
             }
-            else
-            {
-
-            }
+            temp=temp->getNext();
         }
-
-
-
+    }
+    Cell* temp=finish;
+    while(temp!= nullptr)
+    {
+        temp->setAsPath();
+        temp=temp->getParent();
     }
 }
 
@@ -404,7 +416,7 @@ int Matrix::getGCost(Cell *askingC, List<Cell *> *closed,Cell* begining)
         }
         else
         {
-            return (14 + cNeigh->getG());
+            return (10 + cNeigh->getG());
         }
 
     }
@@ -453,5 +465,18 @@ bool Matrix::in(List<Cell *> *list, Cell *cell)
 
 bool Matrix::isShorter(Cell *testCell, Cell *newParentCell)
 {
-    int gCost=0;
+    if(testCell->getParent()== nullptr)
+    {
+        return true;
+    }
+    return(testCell->getG()>(newParentCell->getG()+movementCost(testCell,newParentCell)));
+}
+
+int Matrix::movementCost(Cell *begining, Cell *end)
+{
+    if((begining->getLine()>end->getLine()&&begining->getColumn()>end->getColumn())||(begining->getLine()>end->getLine()&&begining->getColumn()<end->getColumn())||(begining->getLine()<end->getLine()&&begining->getColumn()>end->getColumn())||(begining->getLine()<end->getLine()&&begining->getColumn()<end->getColumn()))
+    {
+        return 14;
+    }
+    return 10;
 }

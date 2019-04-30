@@ -6,23 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/dcamachog1501/Desktop/PathFinding/Logic/Cell.cpp
-Cell.h
-/home/dcamachog1501/Desktop/PathFinding/Logic/Cell.h
-
 /home/dcamachog1501/Desktop/PathFinding/Logic/Cell.h
 vector
 -
 ../Structures/List.h
 /home/dcamachog1501/Desktop/PathFinding/Structures/List.h
-
-/home/dcamachog1501/Desktop/PathFinding/Logic/Matrix.cpp
-string
--
-iostream
--
-Matrix.h
-/home/dcamachog1501/Desktop/PathFinding/Logic/Matrix.h
 
 /home/dcamachog1501/Desktop/PathFinding/Logic/Matrix.h
 Cell.h
