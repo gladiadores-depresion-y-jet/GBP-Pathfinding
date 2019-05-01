@@ -3,6 +3,8 @@
 
 CMakeFiles/PathFinding.dir/Logic/Cell.cpp.o: ../Logic/Cell.cpp
 CMakeFiles/PathFinding.dir/Logic/Cell.cpp.o: ../Logic/Cell.h
+CMakeFiles/PathFinding.dir/Logic/Cell.cpp.o: ../Structures/List.h
+CMakeFiles/PathFinding.dir/Logic/Cell.cpp.o: ../Structures/Node.h
 
 CMakeFiles/PathFinding.dir/Logic/Matrix.cpp.o: ../Logic/Cell.h
 CMakeFiles/PathFinding.dir/Logic/Matrix.cpp.o: ../Logic/Matrix.cpp
