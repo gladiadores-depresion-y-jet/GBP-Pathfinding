@@ -12,7 +12,7 @@ int main()
    cout<<"|______|"<<endl;*/
 
    Matrix* m= new Matrix();
-   m->fill10();
+   m->fill(10);
    /*for(int i=0;i<10;i++)
    {
      m->setAsObstacle(i,i);
@@ -54,9 +54,13 @@ int main()
     m->setAsObstacle(1,5);
     m->setAsObstacle(0,5);
     m->setAsObstacle(5,7);
-
+   cout<<"Backtracking: "<<endl;
+   m->BacktrackingFindPath(9,1,0,2);
+   m->print();
+   cout<<" "<<endl;
+   m->resetPath();
+   cout<<"A*: "<<endl;
    m->AstarFindPath(9,1,0,2);
-
    m->print();
 
     return 0;

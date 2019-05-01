@@ -41,6 +41,9 @@ class Cell
         List<Cell*>* getNeighbours();
         Cell *getParent();
         void setParent(Cell *c);
+        void unsetAsPath();
+        void unsetAsObstacle();
+        void unsetParent();
 };
 
 

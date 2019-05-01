@@ -117,3 +117,16 @@ void Cell::setParent(Cell* c)
 {
     this->parent=c;
 }
+void Cell::unsetAsPath()
+{
+    this->path=false;
+}
+void Cell::unsetAsObstacle()
+{
+    this->obstacle=false;
+}
+
+void Cell::unsetParent()
+{
+    this->parent= nullptr;
+}

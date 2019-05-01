@@ -10,9 +10,11 @@ Matrix::Matrix()
     this->head= nullptr;
 }
 
-void Matrix::fill10()
+void Matrix::fill(int limit)
 {
-    for(int i=0;i<10;i++)
+    this->lines=limit;
+    this->columns=limit;
+    for(int i=0;i<limit;i++)
     {
         List<Cell*>* l= new List<Cell*>();
         if(this->head== nullptr)
@@ -29,7 +31,7 @@ void Matrix::fill10()
             temp->setNext(l);
         }
         int c=0;
-        while(l->getLength()<10)
+        while(l->getLength()<limit)
         {
             Cell* cl= new Cell(i,c);
             l->add(cl);
@@ -89,14 +91,17 @@ void Matrix::print()
             }
             else if(temp2->getValue()->isPath())
             {
-                four+="   X  |";
+                if(temp2->getValue()->getParent()!= nullptr)
+                    four+="   "+directionGetter(temp2->getValue(),temp2->getValue()->getParent())+"  |";
+                else
+                    four+="   $  |";
             }
             else
             {
-                if(temp2->getValue()->getF()>0)
+                /*if(temp2->getValue()->getF()>0)
                 four+="  "+to_string(temp2->getValue()->getF())+"  |";
-                else
-                    four+="      |";
+                else*/
+                four+="      |";
             }
             temp2=temp2->getNext();
         }
@@ -317,7 +322,22 @@ void Matrix::AstarFindPath(int lstart, int cstart, int lfinish, int cfinish)
 
     delete(temp);
 }
+void Matrix::BacktrackingFindPath(int lstart, int cstart, int lfinish, int cfinish)
+{
+    Cell* begining=get(lstart,cstart);
+    Cell* end=get(lfinish,cfinish);
 
+    if(BacktrackingSolver(begining,end))
+    {
+        Cell* temp=end;
+        while(temp!= nullptr)
+        {
+            temp->setAsPath();
+            temp=temp->getParent();
+        }
+    }
+
+}
 int Matrix::getHCost(Cell *askingC,Cell* destiny)
 {
     if(askingC->getLine()==destiny->getLine()&&askingC->getColumn()==destiny->getColumn())
@@ -442,4 +462,101 @@ int Matrix::movementCost(Cell *begining, Cell *end)
         return 14;
     }
     return 10;
+}
+
+void Matrix::resetPath()
+{
+    for(int i=0;i<lines;i++)
+    {
+        for(int t=0;t<columns;t++)
+        {
+            get(i,t)->unsetAsPath();
+        }
+    }
+}
+
+void Matrix::resetAll()
+{
+    resetPath();
+    for(int i=0;i<lines;i++)
+    {
+        for(int t=0;t<columns;t++)
+        {
+            get(i,t)->unsetAsObstacle();
+        }
+    }
+}
+
+bool Matrix::BacktrackingSolver(Cell* begining,Cell* end)
+{
+    begining->setAsPath();
+    if(begining->getLine()==end->getLine()&&begining->getColumn()==end->getColumn())
+    {
+        resetPath();
+        return true;
+    }
+    setNeighbours(begining);
+    List<Cell*>* neighbours=begining->getNeighbours();
+    Node<Cell*>* temp= neighbours->getHead();
+    while(temp!= nullptr)
+    {
+        if(!temp->getValue()->isPath()&&!temp->getValue()->isObstacle())
+        {
+            if(BacktrackingSolver(temp->getValue(),end))
+            {
+                temp->getValue()->setParent(begining);
+                return true;
+            }
+        }
+        temp->getValue()->unsetParent();
+        temp=temp->getNext();
+    }
+    return false;
+
+
+}
+
+string Matrix::directionGetter(Cell *b, Cell *e)
+{
+    if(b->getLine()<e->getLine())
+    {
+        if(b->getColumn()<e->getColumn())
+        {
+            return "DR";
+        }
+        else if(b->getColumn()>e->getColumn())
+        {
+            return "DL";
+        }
+        else
+        {
+            return "D";
+        }
+    }
+    else if(b->getLine()>e->getLine())
+    {
+        if(b->getColumn()<e->getColumn())
+        {
+            return "UR";
+        }
+        else if(b->getColumn()>e->getColumn())
+        {
+            return "UL";
+        }
+        else
+        {
+            return "U";
+        }
+    }
+    else
+    {
+        if(b->getColumn()<e->getColumn())
+        {
+            return "R";
+        }
+        else if(b->getColumn()>e->getColumn())
+        {
+            return "L";
+        }
+    }
 }
