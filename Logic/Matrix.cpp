@@ -305,6 +305,8 @@ void Matrix::AstarFindPath(int lstart, int cstart, int lfinish, int cfinish)
             }
             temp=temp->getNext();
         }
+
+        delete(temp);
     }
     Cell* temp=finish;
     while(temp!= nullptr)
@@ -312,6 +314,8 @@ void Matrix::AstarFindPath(int lstart, int cstart, int lfinish, int cfinish)
         temp->setAsPath();
         temp=temp->getParent();
     }
+
+    delete(temp);
 }
 
 int Matrix::getHCost(Cell *askingC,Cell* destiny)
@@ -327,62 +331,21 @@ int Matrix::getHCost(Cell *askingC,Cell* destiny)
         int column=askingC->getColumn();
         while(true)
         {
+            int difL=destiny->getLine()-line;
+            int difC=destiny->getColumn()-column;
             if(line==destiny->getLine()&&column==destiny->getColumn())
             {
                 return cost;
             }
-            else if(destiny->getLine()>line)
-            {
-                if(destiny->getColumn()>column)
-                {
-                    cost+=14;
-                    line+=1;
-                    column+=1;
-                }
-                else if(destiny->getColumn()<column)
-                {
-                    cost+=14;
-                    line+=1;
-                    column-=1;
-                }
-                else
-                {
-                    cost+=10;
-                    line+=1;
-                }
-            }
-            else if(destiny->getLine()<line)
-            {
-                if(destiny->getColumn()>column)
-                {
-                    cost+=14;
-                    line-=1;
-                    column+=1;
-                }
-                else if(destiny->getColumn()<column)
-                {
-                    cost+=14;
-                    line-=1;
-                    column-=1;
-                }
-                else
-                {
-                    cost+=10;
-                    line-=1;
-                }
-            }
             else
             {
-                if(destiny->getColumn()>column)
-                {
-                    cost+=10;
-                    column+=1;
-                }
-                else if(destiny->getColumn()<column)
-                {
-                    cost+=10;
-                    column-=1;
-                }
+                Cell c=Cell(line,column);
+                cost+=movementCost(&c,destiny);
+                if(difL!=0)
+                    line+=(difL/abs(difL));
+                if(difC!=0)
+                    column+=(difC/abs(difC));
+
             }
         }
     }
