@@ -4,6 +4,7 @@
 
 #include <string>
 #include <iostream>
+#include <random>
 #include "Matrix.h"
 Matrix::Matrix()
 {
@@ -59,7 +60,12 @@ void Matrix::print()
         {
             if(temp2->getValue()->isObstacle())
             {
-                two+="******|";
+                if(temp2->getValue()->getObstacleType()=="simple")
+                    two+="******|";
+                else if(temp2->getValue()->getObstacleType()=="fire")
+                    two+="######|";
+                else if(temp2->getValue()->getObstacleType()=="explosive")
+                    two+="@@@@@@|";
             }
             else
             {
@@ -73,7 +79,12 @@ void Matrix::print()
         {
             if(temp2->getValue()->isObstacle())
             {
-                three+="******|";
+                if(temp2->getValue()->getObstacleType()=="simple")
+                    three+="******|";
+                else if(temp2->getValue()->getObstacleType()=="fire")
+                    three+="######|";
+                else if(temp2->getValue()->getObstacleType()=="explosive")
+                    three+="@@@@@@|";
             }
             else
             {
@@ -87,7 +98,12 @@ void Matrix::print()
         {
             if(temp2->getValue()->isObstacle())
             {
-                four+="******|";
+                if(temp2->getValue()->getObstacleType()=="simple")
+                    four+="******|";
+                else if(temp2->getValue()->getObstacleType()=="fire")
+                    four+="######|";
+                else if(temp2->getValue()->getObstacleType()=="explosive")
+                    four+="@@@@@@|";
             }
             else if(temp2->getValue()->isPath())
             {
@@ -111,7 +127,12 @@ void Matrix::print()
         {
             if(temp2->getValue()->isObstacle())
             {
-                five+="******|";
+                if(temp2->getValue()->getObstacleType()=="simple")
+                    five+="******|";
+                else if(temp2->getValue()->getObstacleType()=="fire")
+                    five+="######|";
+                else if(temp2->getValue()->getObstacleType()=="explosive")
+                    five+="@@@@@@|";
             }
             else
             {
@@ -336,6 +357,10 @@ void Matrix::BacktrackingFindPath(int lstart, int cstart, int lfinish, int cfini
             temp=temp->getParent();
         }
     }
+    else
+    {
+        cout << "No es posible llegar al punto" << endl;
+    }
 
 }
 int Matrix::getHCost(Cell *askingC,Cell* destiny)
@@ -559,4 +584,70 @@ string Matrix::directionGetter(Cell *b, Cell *e)
             return "L";
         }
     }
+}
+
+void Matrix::randomObstacleSetter(Cell* start, Cell* end)
+{
+    random_device rd;
+    static mt19937 rng(rd());
+    static uniform_int_distribution<int> uni(0,9);
+    for(int i=0;i<3;i++)
+    {
+        while (true) {
+            srand(time(0));
+            int line = uni(rng);
+            int column = uni(rng);
+            Cell *cell = get(line, column);
+            if ((!isTheSame(cell, start) && !isTheSame(cell, end)) && !cell->isObstacle())
+            {
+                while(true)
+                {
+                    static uniform_int_distribution<int> typ(0, 2);
+                    static uniform_int_distribution<int> prob(1, 100);
+                    int type = typ(rng);
+                    int probability=prob(rng);
+                    if (type == 0 && probability<=70) {
+                        cell->setObstascleType("simple");
+                        this->setAsObstacle(line, column);
+                        if(!BacktrackingSolver(start,end))
+                        {
+                            cell->unsetAsObstacle();
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    } else if (type == 1 && (probability>70&&probability<=90)) {
+                        cell->setObstascleType("fire");
+                        this->setAsObstacle(line, column);
+                        if(!BacktrackingSolver(start,end))
+                        {
+                            cell->unsetAsObstacle();
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    } else if (type == 2&& (probability>90&&probability<=100)) {
+                        cell->setObstascleType("explosive");
+                        this->setAsObstacle(line, column);
+                        if(!BacktrackingSolver(start,end))
+                        {
+                            cell->unsetAsObstacle();
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+                break;
+            }
+        }
+    }
+}
+
+bool Matrix::isTheSame(Cell *c, Cell *e)
+{
+    return(c->getLine()==e->getLine()&&c->getColumn()==e->getColumn());
 }

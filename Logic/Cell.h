@@ -6,6 +6,7 @@
 #define PATHFINDING_CELL_H
 
 #include <vector>
+#include <string>
 #include "../Structures/List.h"
 
 using namespace std;
@@ -17,6 +18,7 @@ class Cell
         int G;
         int H;
         bool obstacle;
+        string obstacleType;
         bool path;
         Cell* parent;
         List<Cell*>* neighbours;
@@ -44,6 +46,8 @@ class Cell
         void unsetAsPath();
         void unsetAsObstacle();
         void unsetParent();
+        void setObstascleType(string t);
+        string getObstacleType();
 };
 
 

@@ -13,6 +13,17 @@ int main()
 
    Matrix* m= new Matrix();
    m->fill(10);
+   Cell* b= m->get(0,0);
+   Cell* e=m->get(9,9);
+   for(int i=0; i<11;i++)
+   {
+       m->resetPath();
+       m->randomObstacleSetter(b,e);
+       m->AstarFindPath(0,0,9,9);
+       m->print();
+       cout<<"|-------------------------------------------------------------------|"<<endl;
+   }
+
    /*for(int i=0;i<10;i++)
    {
      m->setAsObstacle(i,i);
@@ -23,7 +34,7 @@ int main()
         m->setAsObstacle(l,i);
         l--;
    }*/
-   m->setAsObstacle(8,0);
+   /*m->setAsObstacle(8,0);
    m->setAsObstacle(8,1);
    m->setAsObstacle(7,1);
     m->setAsObstacle(7,2);
@@ -53,15 +64,26 @@ int main()
     m->setAsObstacle(2,5);
     m->setAsObstacle(1,5);
     m->setAsObstacle(0,5);
-    m->setAsObstacle(5,7);
-   cout<<"Backtracking: "<<endl;
+    m->setAsObstacle(5,7);*/
+
+   /*m->setAsObstacle(8,0);
+   m->setAsObstacle(8,1);
+   m->setAsObstacle(8,2);
+    m->setAsObstacle(8,3);
+    m->setAsObstacle(8,4);
+    m->setAsObstacle(8,5);
+    m->setAsObstacle(8,6);
+    m->setAsObstacle(8,7);
+    m->setAsObstacle(8,8);
+    m->setAsObstacle(8,9);*/
+
+   /*cout<<"Backtracking: "<<endl;
    m->BacktrackingFindPath(9,1,0,2);
    m->print();
    cout<<" "<<endl;
    m->resetPath();
    cout<<"A*: "<<endl;
-   m->AstarFindPath(9,1,0,2);
-   m->print();
+   m->AstarFindPath(9,1,0,2);*/
 
     return 0;
 }

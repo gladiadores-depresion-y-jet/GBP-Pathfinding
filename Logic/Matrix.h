@@ -36,6 +36,8 @@ class Matrix
         void resetAll();
         bool BacktrackingSolver(Cell* b,Cell* e);
         string directionGetter(Cell* b,Cell* e);
+        bool isTheSame(Cell* c,Cell *e);
+        void randomObstacleSetter(Cell* b,Cell* e);
 };
 
 

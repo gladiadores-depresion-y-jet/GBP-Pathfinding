@@ -7,6 +7,7 @@
 Cell::Cell()
 {
     this->obstacle=false;
+    this->obstacleType="Undefined";
     this->path=false;
     this->column=0;
     this->line=0;
@@ -19,6 +20,7 @@ Cell::Cell()
 Cell::Cell(int l, int c)
 {
     this->obstacle=false;
+    this->obstacleType="Undefined";
     this->column=c;
     this->line=l;
     this->G=0;
@@ -124,9 +126,19 @@ void Cell::unsetAsPath()
 void Cell::unsetAsObstacle()
 {
     this->obstacle=false;
+    this->obstacleType="Undefined";
 }
 
 void Cell::unsetParent()
 {
     this->parent= nullptr;
+}
+
+void Cell::setObstascleType(string t)
+{
+    this->obstacleType=t;
+}
+
+string Cell::getObstacleType() {
+    return this->obstacleType;
 }
