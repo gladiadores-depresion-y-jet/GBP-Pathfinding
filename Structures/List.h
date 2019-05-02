@@ -92,6 +92,13 @@ class List
         {
             return this->head;
         }
+        void purge()
+        {
+            for(int i=0;i<this->length;i++)
+            {
+                del(i);
+            }
+        }
 };
 
 

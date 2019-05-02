@@ -9,6 +9,7 @@
 Matrix::Matrix()
 {
     this->head= nullptr;
+    this->towers=new List<Cell*>;
 }
 
 void Matrix::fill(int limit)
@@ -510,6 +511,7 @@ void Matrix::resetAll()
             get(i,t)->unsetAsObstacle();
         }
     }
+    towers->purge();
 }
 
 bool Matrix::BacktrackingSolver(Cell* begining,Cell* end)
@@ -615,6 +617,7 @@ void Matrix::randomObstacleSetter(Cell* start, Cell* end)
                         }
                         else
                         {
+                            towers->add(cell);
                             break;
                         }
                     } else if (type == 1 && (probability>70&&probability<=90)) {
@@ -626,6 +629,7 @@ void Matrix::randomObstacleSetter(Cell* start, Cell* end)
                         }
                         else
                         {
+                            towers->add(cell);
                             break;
                         }
                     } else if (type == 2&& (probability>90&&probability<=100)) {
@@ -637,6 +641,7 @@ void Matrix::randomObstacleSetter(Cell* start, Cell* end)
                         }
                         else
                         {
+                            towers->add(cell);
                             break;
                         }
                     }
@@ -650,4 +655,59 @@ void Matrix::randomObstacleSetter(Cell* start, Cell* end)
 bool Matrix::isTheSame(Cell *c, Cell *e)
 {
     return(c->getLine()==e->getLine()&&c->getColumn()==e->getColumn());
+}
+
+List<Cell *> *Matrix::getTowers()
+{
+    return this->towers;
+}
+
+bool Matrix::isInRange(Cell *c,Cell* T)
+{
+    if(T->isObstacle())
+    {
+        if(T->getObstacleType()=="simple")
+        {
+            if(abs(T->getLine()-c->getLine())<=1)
+            {
+                return(abs(T->getColumn()-c->getColumn())<=1);
+
+            }
+        }
+        else if(T->getObstacleType()=="fire"||T->getObstacleType()=="explosive")
+        {
+            if(abs(T->getLine()-c->getLine())<=2)
+            {
+                return(abs(T->getColumn()-c->getColumn())<=2);
+
+            }
+        }
+    }
+    return false;
+}
+
+int Matrix::getDamage(Cell *c)
+{
+    Node<Cell*>* temp=towers->getHead();
+    int damage=0;
+    while(temp!= nullptr)
+    {
+        if(isInRange(c,temp->getValue()))
+        {
+            if(temp->getValue()->getObstacleType()=="fire")
+            {
+                damage+=2;
+            }
+            else if(temp->getValue()->getObstacleType()=="explosive")
+            {
+                damage+=4;
+            }
+            else if(temp->getValue()->getObstacleType()=="simple")
+            {
+                damage+=1;
+            }
+        }
+        temp=temp->getNext();
+    }
+    return damage;
 }

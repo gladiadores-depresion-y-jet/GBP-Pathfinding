@@ -13,6 +13,7 @@ class Matrix
 {
     private:
         List<Cell*>*head;
+        List<Cell*>* towers;
         int lines;
         int columns;
 
@@ -38,6 +39,10 @@ class Matrix
         string directionGetter(Cell* b,Cell* e);
         bool isTheSame(Cell* c,Cell *e);
         void randomObstacleSetter(Cell* b,Cell* e);
+        List<Cell*>* getTowers();
+        bool isInRange(Cell* c,Cell* T);
+        int getDamage(Cell* c);
+
 };
 
 

@@ -13,77 +13,35 @@ int main()
 
    Matrix* m= new Matrix();
    m->fill(10);
-   Cell* b= m->get(0,0);
-   Cell* e=m->get(9,9);
-   for(int i=0; i<11;i++)
-   {
-       m->resetPath();
-       m->randomObstacleSetter(b,e);
-       m->AstarFindPath(0,0,9,9);
-       m->print();
-       cout<<"|-------------------------------------------------------------------|"<<endl;
-   }
+   Cell* obs1=m->get(2,4);
+   obs1->setObstascleType("simple");
+   obs1->setAsObstacle();
+   m->getTowers()->add(obs1);
 
-   /*for(int i=0;i<10;i++)
-   {
-     m->setAsObstacle(i,i);
-   }
-   int l=9;
-   for(int i=0;i<10;i++)
-   {
-        m->setAsObstacle(l,i);
-        l--;
-   }*/
-   /*m->setAsObstacle(8,0);
-   m->setAsObstacle(8,1);
-   m->setAsObstacle(7,1);
-    m->setAsObstacle(7,2);
-    m->setAsObstacle(6,2);
-    m->setAsObstacle(6,3);
-    m->setAsObstacle(6,4);
-    m->setAsObstacle(5,4);
-    m->setAsObstacle(5,5);
-    m->setAsObstacle(5,6);
-    m->setAsObstacle(6,6);
-    m->setAsObstacle(6,7);
-    m->setAsObstacle(6,8);
-    m->setAsObstacle(8,4);
-    m->setAsObstacle(9,4);
-    m->setAsObstacle(8,5);
-    m->setAsObstacle(8,6);
-    m->setAsObstacle(8,7);
-    m->setAsObstacle(8,8);
-    m->setAsObstacle(8,9);
-    m->setAsObstacle(5,8);
-    m->setAsObstacle(4,7);
-    m->setAsObstacle(3,7);
-    m->setAsObstacle(2,8);
-    m->setAsObstacle(1,7);
-    m->setAsObstacle(4,3);
-    m->setAsObstacle(3,4);
-    m->setAsObstacle(2,5);
-    m->setAsObstacle(1,5);
-    m->setAsObstacle(0,5);
-    m->setAsObstacle(5,7);*/
+    Cell* obs2=m->get(2,5);
+    obs2->setObstascleType("fire");
+    obs2->setAsObstacle();
+    m->getTowers()->add(obs2);
 
-   /*m->setAsObstacle(8,0);
-   m->setAsObstacle(8,1);
-   m->setAsObstacle(8,2);
-    m->setAsObstacle(8,3);
-    m->setAsObstacle(8,4);
-    m->setAsObstacle(8,5);
-    m->setAsObstacle(8,6);
-    m->setAsObstacle(8,7);
-    m->setAsObstacle(8,8);
-    m->setAsObstacle(8,9);*/
+    Cell* obs3=m->get(3,5);
+    obs3->setObstascleType("explosive");
+    obs3->setAsObstacle();
+    m->getTowers()->add(obs3);
 
-   /*cout<<"Backtracking: "<<endl;
-   m->BacktrackingFindPath(9,1,0,2);
-   m->print();
-   cout<<" "<<endl;
-   m->resetPath();
-   cout<<"A*: "<<endl;
-   m->AstarFindPath(9,1,0,2);*/
+    Cell* obs4=m->get(4,3);
+    obs4->setObstascleType("fire");
+    obs4->setAsObstacle();
+    m->getTowers()->add(obs4);
+
+    Cell* obs5=m->get(4,5);
+    obs5->setObstascleType("simple");
+    obs5->setAsObstacle();
+    m->getTowers()->add(obs5);
+
+    Cell* cell=m->get(3,4);
+    m->print();
+
+    cout<<"Dano total: "+to_string(m->getDamage(cell))<<endl;
 
     return 0;
 }

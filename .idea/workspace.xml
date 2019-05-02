@@ -30,12 +30,10 @@
       <change beforePath="$PROJECT_DIR$/../GBP_Server/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../GBP_Server/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../GBP_Server/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../GBP_Server/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../GBP_Server/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../GBP_Server/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logic/Cell.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Logic/Cell.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logic/Cell.h" beforeDir="false" afterPath="$PROJECT_DIR$/Logic/Cell.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logic/Matrix.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Logic/Matrix.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logic/Matrix.h" beforeDir="false" afterPath="$PROJECT_DIR$/Logic/Matrix.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Main/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/PathFinding.dir/Logic/Matrix.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Structures/List.h" beforeDir="false" afterPath="$PROJECT_DIR$/Structures/List.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Scrabble_client/.idea/Scrabble_client.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Scrabble_client/.idea/misc.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Scrabble_client/.idea/modules.xml" beforeDir="false" />
@@ -60,11 +58,11 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+            <state relative-caret-position="291">
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -72,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Logic/Matrix.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="600" column="45" selection-start-line="600" selection-start-column="45" selection-end-line="600" selection-end-column="45" />
+            <state relative-caret-position="52">
+              <caret line="664" column="13" selection-start-line="664" selection-start-column="13" selection-end-line="664" selection-end-column="13" />
               <folding>
                 <element signature="e#48#65#0" expanded="true" />
               </folding>
@@ -87,8 +85,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Logic/Matrix.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="39" column="23" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
+            <state relative-caret-position="645">
+              <caret line="43" column="17" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
               <folding>
                 <element signature="e#108#125#0" expanded="true" />
               </folding>
@@ -111,8 +109,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Structures/List.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="810">
-              <caret line="54" selection-start-line="54" selection-end-line="54" />
+            <state relative-caret-position="964">
+              <caret line="98" column="23" selection-start-line="98" selection-start-column="23" selection-end-line="98" selection-end-column="23" />
               <folding>
                 <element signature="e#131#140#0" expanded="true" />
               </folding>
@@ -133,7 +131,7 @@
         <entry file="file://$PROJECT_DIR$/Logic/Cell.h">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="705">
-              <caret line="49" column="26" lean-forward="true" selection-start-line="49" selection-start-column="26" selection-end-line="49" selection-end-column="26" />
+              <caret line="49" column="33" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -165,10 +163,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Structures/Node.h" />
-        <option value="$PROJECT_DIR$/Structures/List.h" />
-        <option value="$PROJECT_DIR$/Logic/Matrix.h" />
-        <option value="$PROJECT_DIR$/Logic/Cell.h" />
         <option value="$PROJECT_DIR$/Logic/Cell.cpp" />
+        <option value="$PROJECT_DIR$/Structures/List.h" />
+        <option value="$PROJECT_DIR$/Logic/Cell.h" />
+        <option value="$PROJECT_DIR$/Logic/Matrix.h" />
         <option value="$PROJECT_DIR$/Logic/Matrix.cpp" />
         <option value="$PROJECT_DIR$/Main/main.cpp" />
       </list>
@@ -239,12 +237,12 @@
       <workItem from="1556606262416" duration="6247000" />
       <workItem from="1556676965441" duration="1730000" />
       <workItem from="1556679036936" duration="5159000" />
-      <workItem from="1556735262602" duration="9594000" />
+      <workItem from="1556735262602" duration="15116000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62442000" />
+    <option name="totallyTimeSpent" value="67964000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
@@ -255,8 +253,8 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.9676026" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.49460045" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.9676026" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4838013" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -278,7 +276,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.9676026" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.49460045" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4838013" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -302,13 +300,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Logic/Matrix.cpp</url>
-          <line>353</line>
+          <line>354</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Main/main.cpp</url>
+          <line>43</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Logic/Matrix.cpp</url>
-          <line>589</line>
-          <option name="timeStamp" value="24" />
+          <line>665</line>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -335,23 +338,6 @@
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Structures/List.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
-          <folding>
-            <element signature="e#131#140#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Logic/Cell.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="49" column="26" lean-forward="true" selection-start-line="49" selection-start-column="26" selection-end-line="49" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Structures/Node.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="386">
@@ -362,12 +348,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Logic/Matrix.h">
+    <entry file="file://$PROJECT_DIR$/Structures/List.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="23" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
+        <state relative-caret-position="964">
+          <caret line="98" column="23" selection-start-line="98" selection-start-column="23" selection-end-line="98" selection-end-column="23" />
           <folding>
-            <element signature="e#108#125#0" expanded="true" />
+            <element signature="e#131#140#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -379,22 +365,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Logic/Matrix.cpp">
+    <entry file="file://$PROJECT_DIR$/Logic/Cell.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="600" column="45" selection-start-line="600" selection-start-column="45" selection-end-line="600" selection-end-column="45" />
+        <state relative-caret-position="705">
+          <caret line="49" column="33" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Logic/Matrix.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="43" column="17" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
           <folding>
-            <element signature="e#48#65#0" expanded="true" />
+            <element signature="e#108#125#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+        <state relative-caret-position="291">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Logic/Matrix.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="664" column="13" selection-start-line="664" selection-start-column="13" selection-end-line="664" selection-end-column="13" />
+          <folding>
+            <element signature="e#48#65#0" expanded="true" />
           </folding>
         </state>
       </provider>
